@@ -22,7 +22,6 @@ const gotTopAlbums = (albums) => ({
 export const getTopAlbums = () => {
     return async (dispatch) => {
         const {data} = await axios.get('https://itunes.apple.com/us/rss/topalbums/limit=107/json')
-        console.log('THUNK');
         const topAlbums = data.feed.entry
         console.log(topAlbums)
         dispatch(gotTopAlbums(topAlbums))
