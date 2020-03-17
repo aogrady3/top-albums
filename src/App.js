@@ -1,13 +1,19 @@
 import React from 'react';
 import Navbar from './components/Navbar'
-import Routes from './Routes'
 import './App.css';
+import {HashRouter, Route, Switch} from 'react-router-dom'
+import TopAlbums from './components/TopAlbums'
+
 
 function App() {
   return (
     <div>
-        <Navbar />
-        <Routes />
+        <HashRouter>
+          <Navbar />
+            <Switch>
+                <Route path ='/' component={TopAlbums} />
+            </Switch>
+        </HashRouter>
     </div>
   );
 }

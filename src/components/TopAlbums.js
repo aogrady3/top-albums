@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getTopAlbums } from '../reducers/albums'
 import  Album  from './Album'
+import './TopAlbums.css'
 
 
 class TopAlbums extends React.Component {
@@ -13,10 +14,10 @@ class TopAlbums extends React.Component {
         const albums = this.props.albums
         let count = 0
         return (
-            <div>
+            <div className='all-albums'>
                 {albums.map(album => {
                     count++
-                    return <Album key={count} album={album} />
+                    return <Album key={count} album={album} count={count}/>
                 })}
             </div>
 
