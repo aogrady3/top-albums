@@ -5,12 +5,10 @@ import './Navbar.css'
 const Navbar = () => {
     return (
         <div className='navbar'>
-            <div>
                 <h3>TOP ALBUMS</h3>
-           </div>
            <div className = 'navbar-links'>
-                <Link to='/'>Top Albums</Link>
-                <Link to='/favorites'>Favorites</Link>
+                <Link to='/'><h3>Albums</h3></Link>
+                <Link to='/favorites'><h3>Favorites</h3></Link>
            </div>
         </div>
     )
