@@ -20,7 +20,6 @@ class TopAlbums extends React.Component {
                     return <Album key={count} album={album} count={count}/>
                 })}
             </div>
-
         )
     }
 }

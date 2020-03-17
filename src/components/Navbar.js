@@ -6,9 +6,9 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div>
-                <h3>TOP 100 ALBUMS</h3>
+                <h3>TOP ALBUMS</h3>
            </div>
-           <div>
+           <div className = 'navbar-links'>
                 <Link to='/'>Top Albums</Link>
                 <Link to='/favorites'>Favorites</Link>
            </div>
