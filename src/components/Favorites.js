@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getFavoriteAlbums } from '../reducers/albums'
+import { getFavoriteAlbums, removeFavoriteAlbum } from '../reducers/albums'
 import  Album  from './Album'
 import './Favorites.css'
 
@@ -22,8 +22,13 @@ class Favorites extends React.Component{
                 <div className = 'all-albums'>
                 {favorites.map(album => {
                     count++
-
-                    return <Album key={count} album={album} count={count} showButton={false}/>
+                    return <Album 
+                        key={count} 
+                        album={album} 
+                        count={count} 
+                        showButton={false}
+                        removeFavoriteAlbum={this.props.removeFavoriteAlbum}
+                        />
                 })}
                 </div>}
             </div>
@@ -38,7 +43,9 @@ const mapState = (state) => {
 }
 
 const mapDispatch = (dispatch) => ({
-    getFavoriteAlbums: () => dispatch(getFavoriteAlbums())
+    getFavoriteAlbums: () => dispatch(getFavoriteAlbums()), 
+    removeFavoriteAlbum: (album) => dispatch(removeFavoriteAlbum(album))
+
 })
 
 export default connect(mapState, mapDispatch)(Favorites)

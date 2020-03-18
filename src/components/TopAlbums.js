@@ -1,8 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getTopAlbums, addFavoriteAlbum, getFavoriteAlbums } from '../reducers/albums'
 import { notInFavorites } from '../utility/favorites'
 import  Album  from './Album'
+import { getTopAlbums, 
+    addFavoriteAlbum, 
+    getFavoriteAlbums, 
+    removeFavoriteAlbum } 
+    from '../reducers/albums'
 import './TopAlbums.css'
 
 
@@ -22,7 +26,14 @@ class TopAlbums extends React.Component {
                 {albums.map(album => {
                     let showButton = notInFavorites(favorites, album)
                     count++
-                    return <Album key={count} album={album} count={count} addFavoriteAlbum={this.props.addFavoriteAlbum} showButton={showButton}/>
+                    return <Album 
+                        key={count} 
+                        album={album} 
+                        count={count} 
+                        addFavoriteAlbum={this.props.addFavoriteAlbum} 
+                        showButton={showButton}
+                        removeFavoriteAlbum={this.props.removeFavoriteAlbum}
+                        />
                 })}
             </div>
         )
@@ -37,7 +48,8 @@ const mapState = (state) => ({
 const mapDisptach = (dispatch) => ({
     getTopAlbums: () => dispatch(getTopAlbums()),
     addFavoriteAlbum: (album) => dispatch(addFavoriteAlbum(album)),
-    getFavoriteAlbums: () => dispatch(getFavoriteAlbums())
+    getFavoriteAlbums: () => dispatch(getFavoriteAlbums()),
+    removeFavoriteAlbum: (album) => dispatch(removeFavoriteAlbum(album))
 
 })
 

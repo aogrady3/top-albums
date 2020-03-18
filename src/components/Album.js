@@ -2,7 +2,7 @@ import React from 'react'
 
 import './Album.css'
 
-const Album = ({album, count, addFavoriteAlbum, showButton }) => { 
+const Album = ({album, count, addFavoriteAlbum, showButton, removeFavoriteAlbum }) => { 
     return (
         <div className ='album'>
             <img src={album[`im:image`][2].label} alt={'Album Artwork'}/>
@@ -15,7 +15,7 @@ const Album = ({album, count, addFavoriteAlbum, showButton }) => {
                 <button onClick={() => addFavoriteAlbum(album)}>Add to Favorites</button>
             </div> :
             <div className = 'favorite-button'>
-            <button >Remove</button>
+            <button onClick={() => removeFavoriteAlbum(album)}>Remove</button>
         </div> 
         }              
         </div>

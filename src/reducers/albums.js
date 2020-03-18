@@ -61,6 +61,18 @@ export const addFavoriteAlbum = (albumObj) => {
     }
 }
 
+export const removeFavoriteAlbum = (albumObj) => {
+    return async (dispatch) => {
+        let favorites = JSON.parse(localStorage.getItem('favorites'))
+        let newFavorites = favorites.filter(album => {
+            return album[`im:name`].label !== albumObj[`im:name`].label
+        })
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
+        dispatch(getTopAlbums())
+        dispatch(getFavoriteAlbums())
+    }
+}
+
 /**
  * Inital State
  */
