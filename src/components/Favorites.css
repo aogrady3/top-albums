@@ -1,0 +1,10 @@
+.all-fav-albums{
+    margin-top: 5%;
+}
+
+.all-albums{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}

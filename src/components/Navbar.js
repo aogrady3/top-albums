@@ -5,7 +5,7 @@ import './Navbar.css'
 const Navbar = () => {
     return (
         <div className='navbar'>
-                <h3>TOP ALBUMS</h3>
+                <h2>TOP ALBUMS</h2>
            <div className = 'navbar-links'>
                 <Link to='/'><h3>Albums</h3></Link>
                 <Link to='/favorites'><h3>Favorites</h3></Link>

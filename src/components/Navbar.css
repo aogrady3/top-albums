@@ -8,9 +8,10 @@
     top: 0;
     width: 100%;
     opacity: 90%;
+    z-index: 1;
 }
 
-.navbar h3{
+.navbar h2{
     padding-left: 1%;
 }
 
