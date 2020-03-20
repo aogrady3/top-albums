@@ -6,6 +6,7 @@ import axios from 'axios'
 
  const GET_TOP_ALBUMS = 'GET_TOP_ALBUMS'
  const GET_FAVORITE_ALBUMS = 'GET_FAVORITE_ALBUMS'
+ const GET_SINGLE_ALBUM = 'GET_SINGLE_ALBUM'
 
 
 /**
@@ -20,6 +21,11 @@ const gotTopAlbums = (albums) => ({
 const gotFavoriteAlbums = (albums) => ({
     type: GET_FAVORITE_ALBUMS,
     albums
+})
+
+const gotSingleAlbum = (album) => ({
+    type: GET_SINGLE_ALBUM,
+    album
 })
 
 
@@ -73,12 +79,24 @@ export const removeFavoriteAlbum = (albumObj) => {
     }
 }
 
+export const getSingleAlbum = (albumName) => {
+    return async (dispatch) => {
+        const {data} = await axios.get('https://itunes.apple.com/us/rss/topalbums/limit=107/json')
+        const allAlbums = data.feed.entry
+        let album = allAlbums.filter(album => {
+            return album[`im:name`].label === albumName
+        })
+        dispatch(gotSingleAlbum(...album))
+    }
+}
+
 /**
  * Inital State
  */
 const intialState = {
     all: [],
     favorites: [],
+    single: {}
 }
 
  /**
@@ -90,6 +108,8 @@ const albumReducer = (state = intialState, action) => {
             return {...state, all: action.albums}
         case GET_FAVORITE_ALBUMS:
             return {...state, favorites: action.albums}
+        case GET_SINGLE_ALBUM:
+            return {...state, single: action.album}
         default:
             return state
     }

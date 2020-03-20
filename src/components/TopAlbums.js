@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { notInFavorites } from '../utility/favorites'
+import { notInFavorites } from '../utility/utility'
 import  Album  from './Album'
 import { getTopAlbums, 
     addFavoriteAlbum, 

@@ -1,12 +1,18 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
+
 
 import './Album.css'
 
-const Album = ({album, count, addFavoriteAlbum, showButton, removeFavoriteAlbum }) => { 
+class Album extends React.Component {
+    render() {
+        const { album, count, addFavoriteAlbum, showButton, removeFavoriteAlbum} = this.props
     return (
         <div className ='album'>
-            <img src={album[`im:image`][2].label} alt={'Album Artwork'}/>
-            <div className='album-description'>
+           <Link to={`/album/${album[`im:name`].label}`}> 
+                <img src={album[`im:image`][2].label} alt={'Album Artwork'} /> 
+            </Link>
+            <div className='album-description' >
                 <div>{count}. {album[`im:name`].label}</div>
                 <div>{album[`im:artist`].label}</div>
             </div> 
@@ -18,7 +24,9 @@ const Album = ({album, count, addFavoriteAlbum, showButton, removeFavoriteAlbum 
             <button onClick={() => removeFavoriteAlbum(album)}>Remove</button>
         </div> 
         }              
-        </div>
-    )}
+        </div>  
+)}
+}
+
 
 export default Album
