@@ -9,7 +9,7 @@ class Album extends React.Component {
         const { album, count, addFavoriteAlbum, showButton, removeFavoriteAlbum} = this.props
     return (
         <div className ='album'>
-           <Link to={`/album/${album[`im:name`].label}`}> 
+           <Link to={`/album/${album.id.attributes[`im:id`]}`}> 
                 <img src={album[`im:image`][2].label} alt={'Album Artwork'} /> 
             </Link>
             <div className='album-description' >

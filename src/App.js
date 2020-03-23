@@ -14,7 +14,7 @@ function App() {
           <Navbar />
             <Switch>
                 <Route exact path ='/favorites' component={Favorites} /> 
-                <Route exact path = '/album/:albumName' render={(routeProps) => <SingleAlbum routeProps={routeProps} />} />
+                <Route exact path = '/album/:albumId' render={(routeProps) => <SingleAlbum routeProps={routeProps} />} />
                 <Route path ='/' component={TopAlbums} />
             </Switch>
         </HashRouter>
