@@ -13,15 +13,15 @@ class Album extends React.Component {
                 <img src={album[`im:image`][2].label} alt={'Album Artwork'} /> 
             </Link>
             <div className='album-description' >
-                <div>{count}. {album[`im:name`].label}</div>
-                <div>{album[`im:artist`].label}</div>
+                <div className ='album-title'>{count}. {album[`im:name`].label}</div>
+                <div className ='album-artist'>{album[`im:artist`].label}</div> 
             </div> 
             {showButton ? 
             <div className = 'favorite-button'>
-                <button className ='btn' onClick={() => addFavoriteAlbum(album)}><i class="fa fa-heart-o"></i></button>
+                <button className ='btn' onClick={() => addFavoriteAlbum(album)}><i className="fa fa-heart-o"></i></button>
             </div> :
             <div className = 'favorite-button'>
-            <button className ='btn' onClick={() => removeFavoriteAlbum(album)}><i class="fa fa-heart"></i></button>
+            <button className ='btn' onClick={() => removeFavoriteAlbum(album)}><i className="fa fa-heart"></i></button>
         </div> 
         }              
         </div>  

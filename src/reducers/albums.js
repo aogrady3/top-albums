@@ -34,7 +34,7 @@ const gotSingleAlbum = (album) => ({
  */
 export const getTopAlbums = () => {
     return async (dispatch) => {
-        const {data} = await axios.get('https://itunes.apple.com/us/rss/topalbums/limit=107/json')
+        const {data} = await axios.get('https://itunes.apple.com/us/rss/topalbums/limit=100/json')
         const topAlbums = data.feed.entry
         dispatch(gotTopAlbums(topAlbums))
     }
@@ -81,7 +81,7 @@ export const removeFavoriteAlbum = (albumObj) => {
 
 export const getSingleAlbum = (albumId) => {
     return async (dispatch) => {
-        const {data} = await axios.get('https://itunes.apple.com/us/rss/topalbums/limit=107/json')
+        const {data} = await axios.get('https://itunes.apple.com/us/rss/topalbums/limit=100/json')
         const allAlbums = data.feed.entry
         let album = allAlbums.filter(album => {
             return album.id.attributes[`im:id`] === albumId

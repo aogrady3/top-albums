@@ -5,9 +5,18 @@ import { isEmpty } from '../utility/utility'
 import './SingleAlbum.css'
 
 class SingleAlbum extends React.Component {
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this)
+    }
     componentDidMount() {
         const albumId = this.props.routeProps.match.params.albumId
         this.props.getSingleAlbum(albumId)
+    }
+
+    handleClick(album) {
+        const url = album.link.attributes.href
+        window.open(url)
     }
 
     render() {
@@ -20,17 +29,23 @@ class SingleAlbum extends React.Component {
                 <div className = 'container'>
                     <img src={album[`im:image`][2].label} alt='Artwork'/>
                 </div>
-                <div className = 'container'>
-                    <h2>{album[`im:name`].label}</h2>
-                    <h3>{album[`im:artist`].label}</h3>
+                <div className = 'container' style={{width: `25%`}}>
+                    <div className= 'full-album-title'>{album[`im:name`].label}</div>
+                        <div className= 'full-album-artist'>
+                                {album[`im:artist`].label} 
+                                <button onClick={() => this.handleClick(album)} >View on Apple Music</button>
+                        </div>
+                    <div className='album-item'>{album.category.attributes.term}</div>
                 </div>
             </div>
+            <hr />
+            <div className='details-container'>
             <div className ='album-details'>
-                <h4>{album[`im:itemCount`].label}: Songs</h4>
-                <h4>{album.category.attributes.term}</h4>
-                <h4>{album[`im:releaseDate`].attributes.label}</h4>
-                <h4>{album.rights.label}</h4>
-
+                <div className='album-item'><b>Release Date: </b>{album[`im:releaseDate`].attributes.label}</div>
+                <div className='album-item'>{album[`im:itemCount`].label}: Song(s)</div>
+                <div className='album-item'>{album[`im:price`].label}</div>
+                <div className='album-item'>{album.rights.label}</div>
+            </div>
             </div>
             </div>
            )
