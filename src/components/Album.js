@@ -18,10 +18,10 @@ class Album extends React.Component {
             </div> 
             {showButton ? 
             <div className = 'favorite-button'>
-                <button onClick={() => addFavoriteAlbum(album)}>Add to Favorites</button>
+                <button className ='btn' onClick={() => addFavoriteAlbum(album)}><i class="fa fa-heart-o"></i></button>
             </div> :
             <div className = 'favorite-button'>
-            <button onClick={() => removeFavoriteAlbum(album)}>Remove</button>
+            <button className ='btn' onClick={() => removeFavoriteAlbum(album)}><i class="fa fa-heart"></i></button>
         </div> 
         }              
         </div>  

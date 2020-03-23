@@ -8,27 +8,30 @@
 }
 
 .album img{
-    object-fit: contain;
+    width: 100%;
+    height: auto;
 }
 
 .album-description{
     text-align: center;
 }
 
-.favorite-button button{
-    color: black;
-    border-radius: 10px;
-}
+.btn {
+    background-color: rgb(90, 128, 211); 
+    border: none; 
+    color: white; 
+    padding: 5% 7%; 
+    font-size: 20px;
+    cursor: pointer; 
+  }
 
-.favorite-button button:hover{
-    background-color: gray;
-    cursor: pointer;
-}
+  .btn:hover {
+    background-color: RoyalBlue;
+  }
 
-/* .favorite-button{
+.favorite-button{
     bottom: 0px;
     position: absolute;
     top: 0px;
-    right: 0px;
-    margin: 1%;
-} */
+    left: 0px;
+}
