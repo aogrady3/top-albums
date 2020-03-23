@@ -26,8 +26,9 @@
     font-size: 25px;
 }
 
-.full-album-artist button{
-    margin-left:10px;
+.full-btn{
+    margin-right: 5px;
+    margin-top: 5px;  
     padding: 5px 7px;
     border-radius: 5px;
     border-color: red;
@@ -36,11 +37,10 @@
     cursor: pointer;
 }
 
-.full-album-artist button:hover{
-    border-color: darkred;
-    color: darkred;
+.full-btn:hover{
+    border-color: grey;
+    color: grey;
 }
-
 
 .album-details{
     width: 25%;
@@ -61,6 +61,17 @@
 
 hr {
    width: 50%; 
+}
+
+.green{
+    color: green;
+    border-color: green
+}
+
+
+.orange{
+    color: orange;
+    border-color: orange;
 }
 
 @media (max-width: 1000px) {

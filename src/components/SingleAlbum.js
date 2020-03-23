@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getSingleAlbum } from '../reducers/albums'
-import { isEmpty } from '../utility/utility'
+import { getSingleAlbum, addFavoriteAlbum, removeFavoriteAlbum } from '../reducers/albums'
+import { isEmpty, notInFavorites } from '../utility/utility'
 import './SingleAlbum.css'
 
 class SingleAlbum extends React.Component {
@@ -21,6 +21,7 @@ class SingleAlbum extends React.Component {
 
     render() {
        const album = this.props.album
+       const favorites = this.props.favorites
        console.log(album)
        if(!isEmpty(album)) {
            return (
@@ -29,13 +30,19 @@ class SingleAlbum extends React.Component {
                 <div className = 'container'>
                     <img src={album[`im:image`][2].label} alt='Artwork'/>
                 </div>
-                <div className = 'container' style={{width: `25%`}}>
+                <div className = 'container' style={{width: `30%`}}>
                     <div className= 'full-album-title'>{album[`im:name`].label}</div>
                         <div className= 'full-album-artist'>
-                                {album[`im:artist`].label} 
-                                <button onClick={() => this.handleClick(album)} >View on Apple Music</button>
+                            {album[`im:artist`].label} 
                         </div>
                     <div className='album-item'>{album.category.attributes.term}</div>
+                    <div>
+                                <button className ='full-btn'onClick={() => this.handleClick(album)} >View on Apple Music</button>
+                            {notInFavorites(favorites, album) ? 
+                                <button className ='full-btn green' onClick={() => this.props.addFavoriteAlbum(album)} >Add To Favorites</button> : 
+                                <button className ='full-btn orange' onClick={() => this.props.removeFavoriteAlbum(album)}>Remove From Favorites</button>
+                        }
+                    </div>
                 </div>
             </div>
             <hr />
@@ -61,10 +68,13 @@ class SingleAlbum extends React.Component {
 
 const mapState = (state) => ({
     album: state.albums.single,
+    favorites: state.albums.favorites
 })
 
 const mapDispatch = (dispatch) => ({
     getSingleAlbum: (albumId) => dispatch(getSingleAlbum(albumId)),
+    addFavoriteAlbum: (album) => dispatch(addFavoriteAlbum(album)),
+    removeFavoriteAlbum: (album) => dispatch(removeFavoriteAlbum(album))
 })
 
 export default connect(mapState, mapDispatch)(SingleAlbum)
